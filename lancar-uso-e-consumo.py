@@ -35,63 +35,61 @@ def executar_automacao():
         time.sleep(1)
         pyautogui.press('enter') 
         time.sleep(1) # Espera carregar o pedido
-
+        repeticoes_sku = int(linha['qtd'])
+        time.sleep(1)
         # --- SEGUNDO LOOP: PARA CADA SKU (LINHA) DO PEDIDO ---
-        for index, linha in grupo.iterrows():
+        for index, linha in range(repeticoes_sku):
             # A coluna 'qtd' define quantas vezes o processo se repete para este SKU
-            repeticoes_sku = int(linha['qtd'])
-            time.sleep(1)
+        
             
             sub_conta = str(linha['sub-conta'])
             time.sleep(1)
             conta = str(linha['conta'])
             time.sleep(1)
 
-            for _ in range(repeticoes_sku):
-                # Sequência de comandos solicitada
-                pyautogui.press('tab')
-                pyautogui.press('enter')
-                time.sleep(1)
+            pyautogui.press('tab')
+            time.sleep(1)
+            pyautogui.press('enter')
                 
-                for _ in range(3):
-                    pyautogui.press('tab')
-                    time.sleep(1)
-                
-                pyautogui.write(sub_conta)
-                time.sleep(1)
+            for _ in range(3):
                 pyautogui.press('tab')
                 time.sleep(1)
-                pyautogui.write(conta)
-                time.sleep(1)
-                
-                pyautogui.hotkey('ctrl', 'tab')
-                time.sleep(1)
-                pyautogui.hotkey('ctrl', 'tab')
-                time.sleep(1)
-                
-                pyautogui.write('PC')
-                time.sleep(1)
-                
-                pyautogui.hotkey('shift', 'tab')
-                time.sleep(1)
-                pyautogui.press('enter')
-                time.sleep(1)
+            
+            pyautogui.write(sub_conta)
+            time.sleep(1)
+            pyautogui.press('tab')
+            time.sleep(1)
+            pyautogui.write(conta)
+            time.sleep(1)
+            
+            pyautogui.hotkey('ctrl', 'tab')
+            time.sleep(1)
+            pyautogui.hotkey('ctrl', 'tab')
+            time.sleep(1)
+            
+            pyautogui.write('PC')
+            time.sleep(1)
+            
+            pyautogui.hotkey('shift', 'tab')
+            time.sleep(1)
+            pyautogui.press('enter')
+            time.sleep(1)
 
-                # Espera longa solicitada após processar o SKU
-                print(f"Aguardando 20 segundos (Pedido: {num_pedido})...")
-                time.sleep(20)
+            # Espera longa solicitada após processar o SKU
+            print(f"Aguardando 20 segundos (Pedido: {num_pedido})...")
+            time.sleep(20)
 
-                pyautogui.press('tab')
-                time.sleep(1)
-                pyautogui.press('tab')
-                time.sleep(1)
-                pyautogui.press('enter')
-                time.sleep(1)
-                # Preparar para o próximo SKU ou próxima repetição
-                pyautogui.hotkey('shift', 'tab')
-                time.sleep(1)
-                pyautogui.press('down')
-                time.sleep(1)
+            pyautogui.press('tab')
+            time.sleep(1)
+            pyautogui.press('tab')
+            time.sleep(1)
+            pyautogui.press('enter')
+            time.sleep(1)
+            # Preparar para o próximo SKU ou próxima repetição
+            pyautogui.hotkey('shift', 'tab')
+            time.sleep(1)
+            pyautogui.press('down')
+            time.sleep(1)
 
     print("Processo concluído!")
 
