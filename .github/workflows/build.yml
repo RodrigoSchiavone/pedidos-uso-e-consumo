@@ -11,7 +11,7 @@ jobs:
       - name: Build
         run: |
           pip install pandas pyautogui pyinstaller
-          pyinstaller --onefile --windowed uso-e-consumo.py
+          pyinstaller --onefile --windowed lancar-uso-e-consumo.py
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
