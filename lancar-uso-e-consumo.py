@@ -1,6 +1,7 @@
 import pandas as pd
 import pyautogui
 import time
+import openpyxl
 
 # Configurações iniciais
 # Pausa de 1 segundo entre cada comando do pyautogui para segurança
