@@ -18,11 +18,11 @@ for index, linha in base.iterrows():
     print(f"--- Iniciando Pedido: {pedido} ---")
 
     pyautogui.hotkey('alt', 't')
-    pyautogui.sleep(1.5)
+    pyautogui.sleep(1)
     pyautogui.write(pedido)
-    pyautogui.sleep(1.5)
+    pyautogui.sleep(1)
     pyautogui.press('enter')
-    pyautogui.sleep(2)
+    pyautogui.sleep(3)
 
     print(f"{quantidade} Itens no pedido")    
     
@@ -35,9 +35,11 @@ for index, linha in base.iterrows():
         # CORREÇÃO: Adicionado ":" ao final do for
         for j in range(3): 
             pyautogui.press('tab')
-            pyautogui.sleep(0.5)
+            pyautogui.sleep(1)
 
         pyautogui.write(subconta)
+        pyautogui.sleep(1)
+        pyautogui.press('tab')
         pyautogui.sleep(1)
         pyautogui.write(conta)
         pyautogui.sleep(1)
@@ -46,7 +48,7 @@ for index, linha in base.iterrows():
         # Mudei a variável para 'k' para não confundir com o loop externo
         for k in range(3):
             pyautogui.hotkey('ctrl','tab')
-            pyautogui.sleep(0.5)
+            pyautogui.sleep(1)
         
         pyautogui.write("PC")
         pyautogui.sleep(1)
@@ -58,9 +60,9 @@ for index, linha in base.iterrows():
         pyautogui.sleep(10)
 
         pyautogui.press('tab')
-        pyautogui.sleep(0.5)
+        pyautogui.sleep(1)
         pyautogui.press('tab')
-        pyautogui.sleep(0.5)
+        pyautogui.sleep(1)
         pyautogui.press('enter')
         pyautogui.sleep(1)
         pyautogui.hotkey('shift','tab')
