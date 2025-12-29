@@ -83,22 +83,3 @@ for index, linha in base.iterrows():
         pyautogui.hotkey('shift','tab')
 
         pyautogui.sleep(1)
-
-
-
-
-
-
-
-
-
-
-
-        
-
-
-
-
-
-
-
