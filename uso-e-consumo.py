@@ -10,6 +10,7 @@ cicloItem = 49
 
 # Configurações iniciais
 base = pd.read_excel('uso-e-consumo.xlsx')
+base = base.dropna(subset=['Pedido de Compra '])
 base.columns = base.columns.str.strip() # Remove espaços extras nos nomes das colunas
 
 total_pedidos = base['Pedido de Compra '].nunique()
