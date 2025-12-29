@@ -5,93 +5,100 @@ import openpyxl
 
 # Configurações iniciais
 # Pausa de 1 segundo entre cada comando do pyautogui para segurança
-pyautogui.PAUSE = 1.0 
+base = pd.read_excel('uso-e-consumo.xlsx')
+print("iniciando em 5 segundos")
+pyautogui.sleep(5)
 
-def executar_automacao():
-    # 1. Ler o arquivo Excel
-    df = pd.read_excel('uso-e-consumo.xlsx')
+
+for index, linha in base.iterrows():
+    pedido = linha['Pedido de Compra ']
+    conta = linha['conta']
+    subconta = linha['sub-conta']
+
+    quantidade = int(linha['qtd']) # Convertemos para inteiro para garantir o uso no range
     
-    # Limpar nomes das colunas (remover espaços extras se houver)
-    df.columns = df.columns.str.strip()
+    print(f"--- Iniciando Pedido: {pedido} ---")
 
-    # Agrupar por pedido para garantir que o Alt+T só aconteça uma vez por pedido
-    # Assumindo que o pedido pode ter várias linhas no Excel
-    pedidos = df.groupby('Pedido de Compra')
+    pyautogui.hotkey('alt', 't')
 
-    print("A automação começará em 5 segundos. Abra a janela do software destino.")
-    time.sleep(1)
+    pyautogui.sleep(1.5)
 
-    for num_pedido, grupo in pedidos:
-        # --- INÍCIO DO LOOP DO PEDIDO ---
-        # Apertar Alt+T
-        pyautogui.hotkey('alt', 't')
-        time.sleep(1)
+    pyautogui.write(pedido)
+
+    pyautogui.sleep(1.5)
+
+    pyautogui.press('enter')
+    
+    pyautogui.sleep(2)
+
+    print(f"{quantidade} Itens no pedido")    
+    # Criar um loop que roda 'quantidade' vezes
+    for i in range(quantidade):
         
-        # Escrever o número do pedido de compra
-        # Removendo pontos se o Excel ler como string formatada
-        pedido_str = str(num_pedido).replace('.', '')
-        time.sleep(1)
-        pyautogui.write(pedido_str)
-        time.sleep(1)
-        pyautogui.press('enter') 
-        time.sleep(1) # Espera carregar o pedido
-        repeticoes_sku = int(linha['qtd'])
-        time.sleep(1)
-        # --- SEGUNDO LOOP: PARA CADA SKU (LINHA) DO PEDIDO ---
-        for index, linha in range(repeticoes_sku):
-            # A coluna 'qtd' define quantas vezes o processo se repete para este SKU
+        pyautogui.press('tab')
+
+        pyautogui.sleep(2)
+
+        pyautogui.press('enter')
+
+        pyautogui.sleep(5)
+
+        for i in range(3)
+            pyautogui.press('tab')
+            pyautogui.sleep(0.5)
+
+        pyautogui.write(subconta)
+
+        pyautogui.sleep(1)
+
+        pyautogui.write(conta)
+
+        pyautogui.sleep(1)
+
+        for i in range(3)
+            pyautogui.hotkey('ctrl','tab')
+            pyautogui.sleep(0.5)
+
         
-            
-            sub_conta = str(linha['sub-conta'])
-            time.sleep(1)
-            conta = str(linha['conta'])
-            time.sleep(1)
+        pyautogui.write("PC")
+        pyautogui.sleep(1)
 
-            pyautogui.press('tab')
-            time.sleep(1)
-            pyautogui.press('enter')
-                
-            for _ in range(3):
-                pyautogui.press('tab')
-                time.sleep(1)
-            
-            pyautogui.write(sub_conta)
-            time.sleep(1)
-            pyautogui.press('tab')
-            time.sleep(1)
-            pyautogui.write(conta)
-            time.sleep(1)
-            
-            pyautogui.hotkey('ctrl', 'tab')
-            time.sleep(1)
-            pyautogui.hotkey('ctrl', 'tab')
-            time.sleep(1)
-            
-            pyautogui.write('PC')
-            time.sleep(1)
-            
-            pyautogui.hotkey('shift', 'tab')
-            time.sleep(1)
-            pyautogui.press('enter')
-            time.sleep(1)
+        pyautogui.hotkey('shift','tab')
 
-            # Espera longa solicitada após processar o SKU
-            print(f"Aguardando 20 segundos (Pedido: {num_pedido})...")
-            time.sleep(20)
+        pyautogui.sleep(1)
 
-            pyautogui.press('tab')
-            time.sleep(1)
-            pyautogui.press('tab')
-            time.sleep(1)
-            pyautogui.press('enter')
-            time.sleep(1)
-            # Preparar para o próximo SKU ou próxima repetição
-            pyautogui.hotkey('shift', 'tab')
-            time.sleep(1)
-            pyautogui.press('down')
-            time.sleep(1)
+        pyautogui.press('enter')
 
-    print("Processo concluído!")
+        pyautogui.sleep(10)
 
-if __name__ == "__main__":
-    executar_automacao()
+        pyautogui.press('tab')
+        pyautogui.sleep(0.5)
+        pyautogui.press('tab')
+        pyautogui.sleep(0.5)
+
+        pyautogui.press('enter')
+
+        pyautogui.sleep(1)
+
+        pyautogui.hotkey('shift','tab')
+
+        pyautogui.sleep(1)
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
