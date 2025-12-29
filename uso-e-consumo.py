@@ -6,13 +6,13 @@ from datetime import timedelta
 
 # Tempos estimados
 cicloPedido = 4.5
-cicloItem = 74
+cicloItem = 49
 
 # Configurações iniciais
 base = pd.read_excel('uso-e-consumo.xlsx')
 base.columns = base.columns.str.strip() # Remove espaços extras nos nomes das colunas
 
-total_pedidos = base['Pedido de Compra'].nunique()
+total_pedidos = base['Pedido de Compra '].nunique()
 total_itens = base['qtd'].sum()
 
 # Tempo total estimado inicial
@@ -40,7 +40,7 @@ pedido_contador = 0
 
 for index, linha in base.iterrows():
     pedido_contador += 1
-    pedido = str(linha['Pedido de Compra']) 
+    pedido = str(linha['Pedido de Compra ']) 
     conta = str(linha['conta'])
     subconta = str(linha['sub-conta'])
     quantidade = int(linha['qtd']) 
@@ -87,7 +87,7 @@ for index, linha in base.iterrows():
         pyautogui.press('enter')
 
         # Espera longa
-        pyautogui.sleep(60)
+        pyautogui.sleep(35)
 
         pyautogui.press('tab')
         pyautogui.sleep(0.5)
