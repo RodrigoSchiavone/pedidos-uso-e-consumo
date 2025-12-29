@@ -17,7 +17,7 @@ for index, linha in base.iterrows():
     
     print(f"--- Iniciando Pedido: {pedido} ---")
 
-    pyautogui.hotkey('alt', 't')
+    pyautogui.hotkey('ctrl', 't')
     pyautogui.sleep(1)
     pyautogui.write(pedido)
     pyautogui.sleep(1)
