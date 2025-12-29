@@ -65,3 +65,5 @@ for index, linha in base.iterrows():
         pyautogui.sleep(1)
         pyautogui.hotkey('shift','tab')
         pyautogui.sleep(1)
+        pyautogui.press('down')
+        pyautogui.sleep(1)
