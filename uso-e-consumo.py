@@ -57,7 +57,7 @@ for index, linha in base.iterrows():
         pyautogui.press('enter')
 
         # Espera longa para processamento do sistema
-        pyautogui.sleep(10)
+        pyautogui.sleep(60)
 
         pyautogui.press('tab')
         pyautogui.sleep(0.5)
