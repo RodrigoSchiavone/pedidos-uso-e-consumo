@@ -1,0 +1,21 @@
+name: Build Windows EXE
+on: [push]
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - name: Build
+        run: |
+          # Adicionado openpyxl aqui
+          pip install pandas pyautogui pyinstaller openpyxl
+          # Adicionado --hidden-import para garantir que o PyInstaller localize o motor do Excel
+          pyinstaller --onefile --hidden-import=openpyxl lancar-uso-e-consumo.py
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: meu-executavel
+          path: dist/*.exe
