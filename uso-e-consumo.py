@@ -10,10 +10,10 @@ cicloItem = 49
 
 # Configurações iniciais
 base = pd.read_excel('uso-e-consumo.xlsx')
-base = base.dropna(subset=['Pedido de Compra '])
+base = base.dropna(subset=['Pedido de Compra'])
 base.columns = base.columns.str.strip() # Remove espaços extras nos nomes das colunas
 
-total_pedidos = base['Pedido de Compra '].nunique()
+total_pedidos = base['Pedido de Compra'].nunique()
 total_itens = base['qtd'].sum()
 
 # Tempo total estimado inicial
@@ -41,7 +41,7 @@ pedido_contador = 0
 
 for index, linha in base.iterrows():
     pedido_contador += 1
-    pedido = str(linha['Pedido de Compra ']) 
+    pedido = str(linha['Pedido de Compra']) 
     conta = str(linha['conta'])
     subconta = str(linha['sub-conta'])
     quantidade = int(linha['qtd']) 
