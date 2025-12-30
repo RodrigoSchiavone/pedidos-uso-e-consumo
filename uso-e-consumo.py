@@ -86,7 +86,10 @@ for index, linha in base.iterrows():
         pyautogui.hotkey('shift','tab')
         pyautogui.sleep(0.5)
         pyautogui.press('enter')
-
+        pyautogui.sleep(1)
+        pyautogui.press('left')
+        pyautogui.sleep(0.5)
+        pyautogui.press('enter')
         # Espera longa
         pyautogui.sleep(35)
 
